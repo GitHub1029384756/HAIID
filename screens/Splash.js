@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
 const Splash = () => {
   return (
     <View style={styles.container}>
-        <Image style={styles.background} source={require("./assets/backgroundGradient.png")} />
+        <Image style={styles.background} source={require("../assets/backgroundGradient.png")} />
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>Beginners?</Text>
           <Text style={styles.defaultText}>See what we can do for you.</Text>

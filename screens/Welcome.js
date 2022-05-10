@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
 const Welcome = () => {
   return (
     <View style={styles.container}>
-        <Image style={styles.background} source={require("./assets/backgroundWithDot.png")} />
+        <Image style={styles.background} source={require("../assets/backgroundWithDot.png")} />
         <View style={styles.buttonBox}>
             <View style={styles.loginButton}>
                   <TouchableOpacity>
@@ -17,17 +17,17 @@ const Welcome = () => {
             </View>
             <View style={styles.signUpButton}>
                   <TouchableOpacity>
-                    <Text style={styles.altText}><Image style={styles.logos} source={require("./assets/facebookLogo.png")}/> Continue with Facebook</Text>
+                    <Text style={styles.altText}><Image style={styles.logos} source={require("../assets/facebookLogo.png")}/> Continue with Facebook</Text>
                   </TouchableOpacity>
             </View>
             <View style={styles.signUpButton}>
                   <TouchableOpacity>
-                    <Text style={styles.altText}><Image style={styles.logos} source={require("./assets/googleLogo.png")}/> Continue with Google</Text>
+                    <Text style={styles.altText}><Image style={styles.logos} source={require("../assets/googleLogo.png")}/> Continue with Google</Text>
                   </TouchableOpacity>
             </View>
             <View style={styles.signUpButton}>
                   <TouchableOpacity>
-                    <Text style={styles.altText}><Image style={styles.logos} source={require("./assets/appleLogo.png")}/> Sign in with Apple</Text>
+                    <Text style={styles.altText}><Image style={styles.logos} source={require("../assets/appleLogo.png")}/> Sign in with Apple</Text>
                   </TouchableOpacity>
             </View>
         </View>
