@@ -1,12 +1,12 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from "react-native";
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <Image style={styles.background} source={require("../assets/backgroundWithDot.png")} />
         <View style={styles.buttonBox}>
             <View style={styles.loginButton}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                     <Text style={styles.altText}>Log In</Text>
                   </TouchableOpacity>
             </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   buttonBox: {
     width: "100%",
     alignItems: "center",
-    top: 200
+    top: 300
   },
 
   loginButton: {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   background: {
     zIndex: -1,
     position: "absolute",
-    left: 20,
+    left: 0,
     right: 20,
     top: 0,
     width: '100%',

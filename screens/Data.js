@@ -5,7 +5,7 @@ import {AreaChart, Grid, YAxis, XAxis} from 'react-native-svg-charts'
 import {Defs, LinearGradient, Stop} from 'react-native-svg'
 import * as shape from 'd3-shape'
 
-const Login = () => {
+const Data = () => {
 
     const carouselRef = useRef(null);
 
@@ -24,7 +24,11 @@ const Login = () => {
         },
     ]
 
-    const data = [ 50, 10, 40, 95, 20, 24, 85]
+    const data = [9, 10, 8, 7.5, 7, 6, 6.5]
+
+    const dataII = [50, 55, 60, 57, 65, 67, 70]
+
+    const dataIII = [45, 44, 45, 45, 46, 45, 45]
 
     const days = ["mon", "tues", "wen", "thur", "fri", "sat", "sun"]
 
@@ -70,7 +74,8 @@ const Login = () => {
           </View>
           <View style={styles.dataContainer}>
               <View style={styles.data}>
-                <Text style={styles.infoTitle2}>Trends</Text>
+                <Text style={styles.infoTitle2}>Average speed (km/h)</Text>
+                    <Text style={styles.infoTrend}>Decreased over the past 7 days</Text>
                     <View style={styles.dataBox}>
                     <YAxis
                         data={data}
@@ -86,6 +91,82 @@ const Login = () => {
                         <AreaChart
                             style={{height: 200, marginLeft: 5, marginBottom: 5}}
                             data={data}
+                            curve={shape.curveNatural}
+                            contentInset={{ top: 20, bottom: 20 }}
+                            svg={{ fill: 'url(#gradient)' }}
+                            >
+                            <Grid/>
+                            <Gradient/>
+                            </AreaChart>
+                            <XAxis
+                            style={{ marginHorizontal: -10 }}
+                            data={data}
+                            formatLabel={(value, index) => days[index]}
+                            contentInset={{ left: 10, right: 10 }}
+                            svg={{ fontSize: 10, fill: 'black' }}
+                        />
+
+                    </View>
+                    </View>
+              </View>
+          </View>
+          <View style={styles.dataContainer}>
+              <View style={styles.data}>
+                <Text style={styles.infoTitle2}>Average steplength (cm)</Text>
+                    <Text style={styles.infoTrend}>Increased over the past 7 days</Text>
+                    <View style={styles.dataBox}>
+                    <YAxis
+                        data={dataII}
+                        contentInset={contentInset}
+                        svg={{
+                            fill: 'grey',
+                            fontSize: 10,
+                        }}
+                        numberOfTicks={10}
+                        formatLabel={(value) => `${value}`}
+                    />
+                    <View style={styles.chartBox}>
+                        <AreaChart
+                            style={{height: 200, marginLeft: 5, marginBottom: 5}}
+                            data={dataII}
+                            curve={shape.curveNatural}
+                            contentInset={{ top: 20, bottom: 20 }}
+                            svg={{ fill: 'url(#gradient)' }}
+                            >
+                            <Grid/>
+                            <Gradient/>
+                            </AreaChart>
+                            <XAxis
+                            style={{ marginHorizontal: -10 }}
+                            data={data}
+                            formatLabel={(value, index) => days[index]}
+                            contentInset={{ left: 10, right: 10 }}
+                            svg={{ fontSize: 10, fill: 'black' }}
+                        />
+
+                    </View>
+                    </View>
+              </View>
+          </View>
+          <View style={styles.dataContainer}>
+              <View style={styles.data}>
+                <Text style={styles.infoTitle2}>Average running time (mins)</Text>
+                    <Text style={styles.infoTrend}>No change over the past 7 days</Text>
+                    <View style={styles.dataBox}>
+                    <YAxis
+                        data={dataIII}
+                        contentInset={contentInset}
+                        svg={{
+                            fill: 'grey',
+                            fontSize: 10,
+                        }}
+                        numberOfTicks={10}
+                        formatLabel={(value) => `${value}`}
+                    />
+                    <View style={styles.chartBox}>
+                        <AreaChart
+                            style={{height: 200, marginLeft: 5, marginBottom: 5}}
+                            data={dataIII}
                             curve={shape.curveNatural}
                             contentInset={{ top: 20, bottom: 20 }}
                             svg={{ fill: 'url(#gradient)' }}
@@ -122,6 +203,10 @@ const styles = StyleSheet.create({
         fontFamily: "sf compact text",
       },
 
+      infoTrend: {
+        color: "#0263FF",
+      },
+
       infoTitle2: {
         fontSize: 23,
         fontWeight: "600",
@@ -138,7 +223,7 @@ const styles = StyleSheet.create({
       dataContainer: {
         marginTop: 20,
         width: "100%",
-        height: 500,
+        height: 300,
       },
 
       spacer: {
@@ -146,8 +231,7 @@ const styles = StyleSheet.create({
       },
 
       data: {
-
-          height: 500,
+          height: 300,
           width: "90%",
             paddingVertical: 10,
             paddingLeft: 10,
@@ -165,6 +249,7 @@ const styles = StyleSheet.create({
 
       carousel: {
         paddingLeft: 20,
+        marginRight: 20
       },
 
       dailySuggestion: {
@@ -184,7 +269,7 @@ const styles = StyleSheet.create({
       dsCard: {
        width: 351,
        height: undefined,
-       aspectRatio: 0.785
+       aspectRatio: 0.76
       },
 
       infoTitle: {
@@ -206,4 +291,4 @@ const styles = StyleSheet.create({
       },
 })
 
-export default Login
+export default Data

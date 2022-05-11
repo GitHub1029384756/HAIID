@@ -43,17 +43,17 @@ const Go = () => {
                         <View style={styles.topBar}>
                             <View style={styles.infoRow}>
                                 <View style={styles.infoContainer}>
-                                    <Text style={styles.infoTitle}>TIME</Text>
+                                    <Text style={styles.infoTitle}>Time</Text>
                                     <Text style={styles.currentInfo}>00:00:00</Text>
                                     <Text style={styles.expectedInfo}>00:47:30</Text>
                                 </View>
                                 <View style={styles.infoContainer}>
-                                    <Text style={styles.infoTitle}>DISTANCE</Text>
+                                    <Text style={styles.infoTitle}>Distance</Text>
                                     <Text style={styles.currentInfo}>00:00</Text>
                                     <Text style={styles.expectedInfo}>01:52</Text>
                                 </View>
                                 <View style={styles.infoContainer}>
-                                    <Text style={styles.infoTitle}>PACE</Text>
+                                    <Text style={styles.infoTitle}>Pace</Text>
                                     <Text style={styles.currentInfo}>00:00:00</Text>
                                     <Text style={styles.expectedInfo}>00:22:45</Text>
                                 </View>

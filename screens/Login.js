@@ -1,9 +1,9 @@
 import {StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from "react-native";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
-       <Image style={styles.background} source={require("./assets/backgroundWithDotII.png")} />
+       <Image style={styles.background} source={require("../assets/backgroundWithDotII.png")} />
         <View style={styles.infoContainer}>
           <Text style={styles.titleText}>Login</Text>
           <View>
@@ -16,7 +16,7 @@ const Login = () => {
         </View>
         <View style={styles.buttonBox}>
             <View style={styles.button}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => navigation.navigate("TabNav")}>
                     <Text style={styles.defaultText}>Log In</Text>
                   </TouchableOpacity>
             </View>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   background: {
     zIndex: -1,
     position: "absolute",
-    left: -20,
+    left: 0,
     right: -20,
     top: 0,
     width: '100%',

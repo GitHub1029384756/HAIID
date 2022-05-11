@@ -1,22 +1,17 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from "react-native";
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
   return (
     <View style={styles.container}>
         <Image style={styles.background} source={require("../assets/backgroundGradient.png")} />
         <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>Beginners?</Text>
+          <Text style={styles.titleText}>Begin your journey!</Text>
           <Text style={styles.defaultText}>See what we can do for you.</Text>
         </View>
         <View style={styles.buttonBox}>
           <View style={styles.OKButton}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("Welcome")}>
                 <Text style={styles.defaultText}>OK</Text>
-              </TouchableOpacity>
-          </View>
-          <View style={styles.dismissButton}>
-              <TouchableOpacity>
-                <Text style={styles.altText}>Dismiss</Text>
               </TouchableOpacity>
           </View>
         </View>
@@ -46,7 +41,7 @@ const styles = StyleSheet.create({
   defaultText: {
     color: "#fff",
     fontSize: 17,
-    marginTop: 2,
+    marginTop: 5,
     fontWeight: "600",
   },
 

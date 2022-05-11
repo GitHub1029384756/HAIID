@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from "react-
 const SignUp = () => {
   return (
     <View style={styles.container}>
-        <Image style={styles.background} source={require("./assets/backgroundWithDotIII.png")} />
+        <Image style={styles.background} source={require("../assets/backgroundWithDotIII.png")} />
         <View style={styles.infoContainer}>
           <Text style={styles.titleText}>Sign Up</Text>
           <View>

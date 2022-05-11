@@ -1,11 +1,13 @@
 import {useState} from "react";
-import {StyleSheet, Text, View, TouchableOpacity, Image, ScrollView} from "react-native";
+import {StyleSheet, Text, View, Switch, Image, ScrollView} from "react-native";
 import {Picker} from "@react-native-picker/picker";
 
 const Run = () => {
   const [time, setTime] = useState({hours: 0, mins: 0, secs: 0})
   const [pace, setPace] = useState({hours: 0, mins: 0, secs: 0})
   const [distance, setDistance] = useState({km: 0, m: 0})
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
   const hoursGenerator = () => {
     const hours = []
@@ -38,30 +40,20 @@ const Run = () => {
          
           <ScrollView>
           <Text style={styles.titleText}>Set Your Run</Text>
-  
-          <View style={styles.suggestionGoalContainer}>
-            <View style={styles.suggestedGoal}>
-                <View style={styles.infoRow}>
-                  <Image style={styles.runner} source={require("../assets/runner.png")}/>
-                  <View>
-                    <Text style={styles.suggestionTitleText}>Need Suggested Goals?</Text>
-                    <Text style={styles.suggestionText}>Based on your previous usage, we can give {"\n"}you suggested goals on time, pace and {"\n"}distance.</Text>
-                  </View>
-                </View>
-                <View style={styles.infoRow}>
-                  <View style={styles.noButton}>
-                      <TouchableOpacity>
-                        <Text style={styles.altText}>No</Text>
-                      </TouchableOpacity>
-                  </View>
-                  <View style={styles.yesButton}>
-                      <TouchableOpacity>
-                        <Text style={styles.defaultText}>Yes</Text>
-                      </TouchableOpacity>
-                  </View>
-                </View>
-            </View> 
-          </View>
+         
+              <View style={styles.suggestionGoalContainer}>
+                <View style={styles.suggestedGoal}>
+                    <Image style={styles.dsCard} source={require("../assets/suggestedGoals.png")} />
+                    <Switch
+                      trackColor={{ false: "#767577", true: "#0263FF" }}
+                      ios_backgroundColor="#3e3e3e"
+                      onValueChange={toggleSwitch}
+                      style={styles.yesNo}
+                      value={isEnabled}
+                    />
+                </View> 
+              </View>
+        
           <View style={styles.infoContainer}>
             <View>
             <View style={styles.infoBox}>
@@ -85,9 +77,18 @@ const Run = () => {
                 </Picker>
                 </View>
               </View>
-              <Text style={styles.suggestedText}>Suggested:</Text>
-              <Text style={styles.suggestedValue}>0h, 47m and 30s </Text>
-              <Text>Confused? Click here for more info</Text>
+              {
+                isEnabled ? 
+                (
+                  <>
+                  <Text style={styles.suggestedText}>Suggested:</Text>
+                  <Text style={styles.suggestedValue}>0h, 47m and 30s </Text>
+                  <Text>Confused? Click here for more info</Text>
+                  </>
+                ) 
+                : 
+                <></>
+              }
             </View>
             </View>
             <Text></Text>
@@ -113,9 +114,18 @@ const Run = () => {
                 </Picker>
                 </View>
               </View>
-              <Text style={styles.suggestedText}>Suggested:</Text>
-              <Text style={styles.suggestedValue}>0h, 22m and 45s / km </Text>
-              <Text>Confused? Click here for more info</Text>
+              {
+                isEnabled ? 
+                (
+                  <>
+                   <Text style={styles.suggestedText}>Suggested:</Text>
+                    <Text style={styles.suggestedValue}>0h, 22m and 45s / km </Text>
+                    <Text>Confused? Click here for more info</Text>
+                  </>
+                ) 
+                : 
+                <></>
+              }
             </View>
             </View>
             <Text></Text>
@@ -135,9 +145,18 @@ const Run = () => {
                 </Picker>
                 </View>
               </View>
-              <Text style={styles.suggestedText}>Suggested:</Text>
-              <Text style={styles.suggestedValue}>1.52km</Text>
-              <Text>Confused? Click here for more info</Text>
+              {
+                isEnabled ? 
+                (
+                  <>
+                   <Text style={styles.suggestedText}>Suggested:</Text>
+                  <Text style={styles.suggestedValue}>1.52km</Text>
+                  <Text>Confused? Click here for more info</Text>
+                  </>
+                ) 
+                : 
+                <></>
+              }
             </View>
             </View>
           </View>
@@ -153,6 +172,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F5F5F5",
     fontFamily: "sf compact text",
+  },
+
+  yesNo: {
+    position: "absolute",
+    top: 435,
+    right: 150,
   },
 
   tabBarContainer: {
@@ -247,24 +272,24 @@ const styles = StyleSheet.create({
   },
 
   suggestedGoal: {
-    marginTop: 15,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: "#fffffff2",
-    width: "90%",
-    height: 130,
-    backgroundColor: "#fffffff2",
-    shadowColor: "#171717",
-    shadowOpacity: 0.1,
-    shadowRadius: 7,
-    shadowOffset: {width: -7, height: 7}
-  },  
+    width: 351,
+    height: undefined,
+    aspectRatio: 0.76,
+    paddingTop: 20,
+    marginBottom: 20
+  }, 
+  
+  dsCard: {
+    width: 351,
+    height: undefined,
+    aspectRatio: 0.76,
+    zIndex: -1
+  },
 
   titleText: {
     paddingLeft: 30,
     paddingTop: 60,   
     fontSize: 30,
-    color: "#fff",
     fontWeight: "700",
     letterSpacing: 1,
   },
@@ -335,13 +360,13 @@ const styles = StyleSheet.create({
   },
 
   noButton: {
-    marginLeft: 120,
-    marginRight: 5,
+    // marginLeft: 120,
+    // marginRight: 5,
     width: 100,
     height: 30,
     borderRadius: 7,
     backgroundColor: "#E9E9E9",
-    color: "white",
+    color: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
